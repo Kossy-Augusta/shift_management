@@ -24,8 +24,13 @@ class CreateShiftRequest extends FormRequest
     {
         return [
             'date' => ['required','date', new TodayorAfter],
-            'email' => 'required|string|email',
-            'shift_name' => 'required|string'
+            'emails' => 'required|array',
+            'emails.*' => [
+                'required', 
+                'string', 
+                'email'
+            ],
+            'shift_id' => 'required|string'
         ];
     }
 }
