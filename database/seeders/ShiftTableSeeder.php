@@ -14,8 +14,8 @@ class ShiftTableSeeder extends Seeder
     public function run(): void
     {
         $shifts =[
-            ['title' => 'Morning', 'start_time'=> '2024-06-10 08:00:00', 'end_time' => '2024-06-10 18:00:00'],
-            ['title' => 'Night', 'start_time'=> '2024-06-10 18:00:00', 'end_time' => '2024-06-10 08:00:00']
+            ['title' => 'Morning', 'start_time'=> '08:00:00', 'end_time' => '18:00:00'],
+            ['title' => 'Night', 'start_time'=> '18:00:00', 'end_time' => '08:00:00']
         ];
 
         foreach ($shifts as $shift)
