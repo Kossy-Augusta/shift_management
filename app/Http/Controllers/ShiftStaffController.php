@@ -20,7 +20,7 @@ class ShiftStaffController extends Controller
     {
         // $shift_staff = DB::select('SELECT * FROM shift_staff ORDER BY created_at DESC LIMIT 21');
         // get the last 20 inputs in descending oorder and paginate
-        $perPage = $request->input('perPage') ?? 5;
+        $perPage = $request->query('perPage') ?? 5;
         $page = intval($request->query('page'));
         $page = (isset($page) && $page > 1) ? $page : 1;
         $offset = ($page > 1) ? ($perPage * ($page - 1)) : 0; 
@@ -38,10 +38,10 @@ class ShiftStaffController extends Controller
 
             $pagination = [
                 'from' => ($offset + 1),
-                'last_page' => $pages,
-                'per_page' => $perPage,
+                'pages' => $pages,
                 'to' => ($offset + $perPage),
-                'total_records' => $total_results
+                'current' => $page,
+                'total' => $total_results
             ];
             $shiftStaff = GetShiftsResource::collection($shift_staff);
 
