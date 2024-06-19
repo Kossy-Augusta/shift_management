@@ -34,14 +34,14 @@ class ShiftStaffController extends Controller
                             ->get();
             $total_results= $shift_staff->count();
             // get total number of pages
-            $pages = ($total_results % $perPage == 0) ? ($total_results / $perPage) : (round($total_results / $perPage, 0) + 1);
+            $pages = ($total_results % $perPage == 0) ? ($total_results / $perPage) : (floor($total_results / $perPage) + 1);
 
             $pagination = [
                 'from' => ($offset + 1),
                 'last_page' => $pages,
                 'per_page' => $perPage,
                 'to' => ($offset + $perPage),
-                'total' => $total_results
+                'total_records' => $total_results
             ];
             $shiftStaff = GetShiftsResource::collection($shift_staff);
 
